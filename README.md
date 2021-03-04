@@ -1,14 +1,12 @@
 # Researching the Best Place for Urban Farming Spots in Edinburgh
 
+## Introduction
+
 This project researches the best location for urban farming in Edinburgh.
 
 Edinburgh, the capital of Scotland, is a relatively small but vibrant city bustling with international tourists. Even though it is the second most visited city in the UK after London, it only has 537,000 inhabitants, which is relatively a small number compared to other capital cities in the world.
 
 The United Kingdom has been going through [the worst economic contraction](https://www.forbes.com/sites/roberthart/2021/02/12/uk-hit-by-worst-economic-contraction-on-record-amid-covid-19-pandemic/) due to [lockdown restrictions](https://www.cnbc.com/2021/02/22/uk-lockdown-details-and-dates-of-how-it-could-be-lifted.html) caused by the Covid-19 pandemic. [Food prices have gone up](https://www.theguardian.com/business/2021/feb/17/uk-inflation-rises-as-price-of-food-and-furniture-increases) and many people need more affordable food with constant supply. Some communities are initiating urban farming in the city of Edinburgh, which is also experiencing such economic condition. This project aims to find the best location for these urban farming spots.
-
-## Leveraging Foursquare API and clustering
-
-This research uses Foursquare API to analyze the best area in Edinburgh to start an urban farming spot based on surrounding venues. Clustering is also used to divide Edinburgh into different clusters, infer the characteristics of each cluster, then decide on which cluster/area is the best for the location of urban farming spots, based on the venues found in that area.
 
 ## The Data
 
@@ -16,17 +14,27 @@ The data used was downloaded from [doogal](https://www.doogal.co.uk/PostcodeDown
 
 It has 50 columns, but not all columns are necessary for the research, so initial data cleaning was performed prior to analysis. The columns post code, latitude and longitude coordinates, ward, constituency, rural/urban, and output area will be useful for identification, and the latitude and longitude coordinates will especially be used in the http requests to Foursquare API. The rural/urban will also be used to analyze whether it will be a good place for urban farming, since we would want an area with a lot of community activities.
 
-The following is a map of Edinburgh with all the different postcodes.
+## Methodology
+
+### Leveraging Foursquare API and clustering
+
+This research uses Foursquare API to analyze the best area in Edinburgh to start an urban farming spot based on surrounding venues. Clustering is also used to divide Edinburgh into different clusters, infer the characteristics of each cluster, then decide on which cluster/area is the best for the location of urban farming spots, based on the venues found in that area.
+
+### Visualizing the Postcode Areas
+
+The following is a map of Edinburgh with all the different areas of postcodes obtained from the data, mapped using folium.
 
 ![Map of Edinburgh with City Centre Postcodes](images/edinburgh_map_postcodes.jpg)
 
-## Clustering Results
+## Results
 
 K-Means Clustering from scikit-learn was used to divide the City of Edinburgh into five clusters. The results show five distinct area in the city as shown in the map below:
 
 ![Map of Edinburgh with the Five Different Clusters](images/edinburgh_map_clustered.jpg)
 
-The clusters wih venues listed in the notebook each has different characteristics as follows.
+## Discussion
+
+The clusters with venues listed in the notebook each has different characteristics as follows.
 
 ### Cluster 1: The City Centre
 
@@ -50,6 +58,6 @@ This cluster covers mostly Tollcross area, stretching from the southwest to the 
 
 ## Conclusion
 
-After some analysis, it was found that cluster 4 would be the best location for urban farming spots in Edinburgh. It is surrounded by many restaurants, grocery stores, and traditional residential areas which are all potential buyers for the produce of urban farming.
+After some analysis, it was found that cluster 4, covering Dean Village and nearby area, would be the best location for urban farming spots in Edinburgh. It is surrounded by many restaurants, grocery stores, and traditional residential areas which are all potential buyers for the produce of urban farming.
 
-The second choice would be cluster 5, which is a more vibrant area but also has many potential buyers such as restaurants, hotels, and also local residents.
+The second choice would be cluster 5, comprising Tollcross and nearby area, which is more vibrant than cluster 4 but also has many potential buyers such as restaurants, hotels, and also local residents.
